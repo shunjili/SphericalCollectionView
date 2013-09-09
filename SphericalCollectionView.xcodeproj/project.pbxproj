@@ -17,7 +17,9 @@
 		08CF99C217DD41F000CBB8AC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 08CF99C117DD41F000CBB8AC /* Default@2x.png */; };
 		08CF99C417DD41F000CBB8AC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 08CF99C317DD41F000CBB8AC /* Default-568h@2x.png */; };
 		08CF99C717DD41F000CBB8AC /* SPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08CF99C617DD41F000CBB8AC /* SPViewController.m */; };
-		08CF99CA17DD41F000CBB8AC /* SPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08CF99C817DD41F000CBB8AC /* SPViewController.xib */; };
+		08CF99DB17DD4F8200CBB8AC /* SPSphericalCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08CF99DA17DD4F8200CBB8AC /* SPSphericalCollectionViewCell.m */; };
+		08CF99DE17DD503100CBB8AC /* SPSphericalCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 08CF99DD17DD503100CBB8AC /* SPSphericalCollectionView.m */; };
+		08CF99E117DD538B00CBB8AC /* SPCollectionViewSphericalLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 08CF99E017DD538B00CBB8AC /* SPCollectionViewSphericalLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +38,12 @@
 		08CF99C317DD41F000CBB8AC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		08CF99C517DD41F000CBB8AC /* SPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPViewController.h; sourceTree = "<group>"; };
 		08CF99C617DD41F000CBB8AC /* SPViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPViewController.m; sourceTree = "<group>"; };
-		08CF99C917DD41F000CBB8AC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SPViewController.xib; sourceTree = "<group>"; };
+		08CF99D917DD4F8200CBB8AC /* SPSphericalCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPSphericalCollectionViewCell.h; path = SphericalCollectionView/SPSphericalCollectionViewCell.h; sourceTree = "<group>"; };
+		08CF99DA17DD4F8200CBB8AC /* SPSphericalCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPSphericalCollectionViewCell.m; path = SphericalCollectionView/SPSphericalCollectionViewCell.m; sourceTree = "<group>"; };
+		08CF99DC17DD503100CBB8AC /* SPSphericalCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPSphericalCollectionView.h; path = SphericalCollectionView/SPSphericalCollectionView.h; sourceTree = "<group>"; };
+		08CF99DD17DD503100CBB8AC /* SPSphericalCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPSphericalCollectionView.m; path = SphericalCollectionView/SPSphericalCollectionView.m; sourceTree = "<group>"; };
+		08CF99DF17DD538B00CBB8AC /* SPCollectionViewSphericalLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPCollectionViewSphericalLayout.h; path = SphericalCollectionView/SPCollectionViewSphericalLayout.h; sourceTree = "<group>"; };
+		08CF99E017DD538B00CBB8AC /* SPCollectionViewSphericalLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPCollectionViewSphericalLayout.m; path = SphericalCollectionView/SPCollectionViewSphericalLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +63,7 @@
 		08CF99A117DD41F000CBB8AC = {
 			isa = PBXGroup;
 			children = (
+				08CF99E317DD53AE00CBB8AC /* SPKit */,
 				08CF99B317DD41F000CBB8AC /* SphericalCollectionView */,
 				08CF99AC17DD41F000CBB8AC /* Frameworks */,
 				08CF99AB17DD41F000CBB8AC /* Products */,
@@ -87,7 +95,6 @@
 				08CF99BD17DD41F000CBB8AC /* SPAppDelegate.m */,
 				08CF99C517DD41F000CBB8AC /* SPViewController.h */,
 				08CF99C617DD41F000CBB8AC /* SPViewController.m */,
-				08CF99C817DD41F000CBB8AC /* SPViewController.xib */,
 				08CF99B417DD41F000CBB8AC /* Supporting Files */,
 			);
 			path = SphericalCollectionView;
@@ -105,6 +112,19 @@
 				08CF99C317DD41F000CBB8AC /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		08CF99E317DD53AE00CBB8AC /* SPKit */ = {
+			isa = PBXGroup;
+			children = (
+				08CF99DC17DD503100CBB8AC /* SPSphericalCollectionView.h */,
+				08CF99DD17DD503100CBB8AC /* SPSphericalCollectionView.m */,
+				08CF99D917DD4F8200CBB8AC /* SPSphericalCollectionViewCell.h */,
+				08CF99DA17DD4F8200CBB8AC /* SPSphericalCollectionViewCell.m */,
+				08CF99DF17DD538B00CBB8AC /* SPCollectionViewSphericalLayout.h */,
+				08CF99E017DD538B00CBB8AC /* SPCollectionViewSphericalLayout.m */,
+			);
+			name = SPKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,7 +183,6 @@
 				08CF99C017DD41F000CBB8AC /* Default.png in Resources */,
 				08CF99C217DD41F000CBB8AC /* Default@2x.png in Resources */,
 				08CF99C417DD41F000CBB8AC /* Default-568h@2x.png in Resources */,
-				08CF99CA17DD41F000CBB8AC /* SPViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +196,9 @@
 				08CF99BA17DD41F000CBB8AC /* main.m in Sources */,
 				08CF99BE17DD41F000CBB8AC /* SPAppDelegate.m in Sources */,
 				08CF99C717DD41F000CBB8AC /* SPViewController.m in Sources */,
+				08CF99DB17DD4F8200CBB8AC /* SPSphericalCollectionViewCell.m in Sources */,
+				08CF99DE17DD503100CBB8AC /* SPSphericalCollectionView.m in Sources */,
+				08CF99E117DD538B00CBB8AC /* SPCollectionViewSphericalLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,14 +211,6 @@
 				08CF99B717DD41F000CBB8AC /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		08CF99C817DD41F000CBB8AC /* SPViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				08CF99C917DD41F000CBB8AC /* en */,
-			);
-			name = SPViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -264,7 +278,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SphericalCollectionView/SphericalCollectionView-Prefix.pch";
 				INFOPLIST_FILE = "SphericalCollectionView/SphericalCollectionView-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -275,7 +291,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SphericalCollectionView/SphericalCollectionView-Prefix.pch";
 				INFOPLIST_FILE = "SphericalCollectionView/SphericalCollectionView-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

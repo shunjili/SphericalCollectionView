@@ -9,6 +9,7 @@
 #import "SPViewController.h"
 #import "SPSphericalCollectionView.h"
 #import "SPSphericalCollectionViewCell.h"
+#import "SPCollectionViewSphericalLayout.h"
 
 @interface SPViewController ()<UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -20,7 +21,7 @@
 {
     [super viewDidLoad];
     [[self view] setFrame: [[UIScreen mainScreen] bounds]];
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    SPCollectionViewSphericalLayout *layout = [[SPCollectionViewSphericalLayout alloc] init];
     SPSphericalCollectionView *sphericalView = [[SPSphericalCollectionView alloc] initWithFrame:[[self view] bounds] collectionViewLayout: layout];
     [sphericalView setBackgroundColor:[UIColor blueColor]];
     [sphericalView registerClass:[SPSphericalCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];

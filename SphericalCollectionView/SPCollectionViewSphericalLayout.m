@@ -7,7 +7,8 @@
 //
 
 #import "SPCollectionViewSphericalLayout.h"
-
+#import "SPCoordinateManager.h"
+#import <QuartzCore/QuartzCore.h>
 @implementation SPCollectionViewSphericalLayout
 
 - (CGSize)collectionViewContentSize
@@ -36,10 +37,17 @@
     
     [attributes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         UICollectionViewLayoutAttributes *attr = (UICollectionViewLayoutAttributes*) obj;
-        NSLog(@"x: %f, y: %f", attr.center.x, attr.center.y);
 
-        attr.alpha = (idx+0.01) / [attributes count];
-        attr.center = [self centerForIndex:idx withMaxIndex:count];
+        attr.center = self.collectionView.center;
+
+        SPCoordinate coordinate = [[SPCoordinateManager sharedManager] coordinateForIndex:(idx+1) withMaximumIndex:count];
+        NSLog(@"x: %f, y: %f, z: %f", coordinate.x, coordinate.y, coordinate.z);
+        CGFloat radius = 200;
+        CGFloat shrinkFactor =(coordinate.z + 1)/2 + 0.5;
+        attr.transform = CGAffineTransformTranslate(CGAffineTransformMakeScale(shrinkFactor, shrinkFactor), coordinate.x*radius/shrinkFactor, coordinate.y*radius/shrinkFactor);
+        
+//        attr.transform3D = CATransform3DTranslate(CATransform3DMakeRotation((1-fabs(coordinate.z) * M_PI_4), coordinate.y, coordinate.x, 0.0), coordinate.x *radius, coordinate.y*radius, coordinate.z*radius);
+        attr.alpha = (coordinate.z +1)/2;
     }];
     
     return attributes;

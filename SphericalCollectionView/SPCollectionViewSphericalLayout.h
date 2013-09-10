@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/CATransform3D.h>
+
 
 @interface SPCollectionViewSphericalLayout : UICollectionViewFlowLayout
 

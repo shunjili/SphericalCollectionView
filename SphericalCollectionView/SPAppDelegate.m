@@ -9,16 +9,20 @@
 #import "SPAppDelegate.h"
 
 #import "SPViewController.h"
-
+#import "SPCoordinateManager.h"
 @implementation SPAppDelegate
+
++ (NSString *) applicationDocumentsDirectory
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+    return basePath;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    NSLog(@"%f", [[UIScreen mainScreen] bounds].size.height);
-    NSLog(@"%f", [[UIScreen mainScreen] bounds].size.width);
-
     // Override point for customization after application launch.
     self.viewController = [[SPViewController alloc] init];
     self.window.rootViewController = self.viewController;

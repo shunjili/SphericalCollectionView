@@ -15,6 +15,12 @@ static SPCoordinate SPCoordinateXAxis = {
     .z = 0.0f,
 };
 
+static SPCoordinate SPCoordinateZAxis = {
+    .x = 0.0f,
+    .y = 0.0f,
+    .z = 1.0f,
+};
+
 @implementation SPCoordinateManager
 
 
@@ -62,7 +68,7 @@ static SPCoordinate SPCoordinateXAxis = {
 {
     SPCoordinate originalCoordinate = [self coordinateForIndex:index withMaximumIndex:max];
     //TO DO:figure out the formula
-    CATransform3D transform = [self transitionFrom:SPCoordinateXAxis to:originAxis];
+    CATransform3D transform = [self transitionFrom:SPCoordinateZAxis to:originAxis];
     //Apply transition matrix;
     SPCoordinate retval;
     retval.x = transform.m11 * originalCoordinate.x + transform.m12 * originalCoordinate.y + transform.m13 *originalCoordinate.z;

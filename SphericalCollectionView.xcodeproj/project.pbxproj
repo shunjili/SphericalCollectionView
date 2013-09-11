@@ -20,8 +20,8 @@
 		08CF99DB17DD4F8200CBB8AC /* SPSphericalCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08CF99DA17DD4F8200CBB8AC /* SPSphericalCollectionViewCell.m */; };
 		08CF99DE17DD503100CBB8AC /* SPSphericalCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 08CF99DD17DD503100CBB8AC /* SPSphericalCollectionView.m */; };
 		08CF99E117DD538B00CBB8AC /* SPCollectionViewSphericalLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 08CF99E017DD538B00CBB8AC /* SPCollectionViewSphericalLayout.m */; };
+		26AD99A617E0BF6F00741C00 /* SPCoordinateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AD99A517E0BF6F00741C00 /* SPCoordinateManager.m */; };
 		26D9554117DE8730003BB396 /* coordinate.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26D9554017DE8730003BB396 /* coordinate.plist */; };
-		26D9554417DEB10F003BB396 /* SPCoordinateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D9554317DEB10F003BB396 /* SPCoordinateManager.m */; };
 		26D9554617DEB6FC003BB396 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26D9554517DEB6FC003BB396 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,9 +47,9 @@
 		08CF99DD17DD503100CBB8AC /* SPSphericalCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPSphericalCollectionView.m; path = SphericalCollectionView/SPSphericalCollectionView.m; sourceTree = "<group>"; };
 		08CF99DF17DD538B00CBB8AC /* SPCollectionViewSphericalLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPCollectionViewSphericalLayout.h; path = SphericalCollectionView/SPCollectionViewSphericalLayout.h; sourceTree = "<group>"; };
 		08CF99E017DD538B00CBB8AC /* SPCollectionViewSphericalLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPCollectionViewSphericalLayout.m; path = SphericalCollectionView/SPCollectionViewSphericalLayout.m; sourceTree = "<group>"; };
+		26AD99A417E0BF6F00741C00 /* SPCoordinateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPCoordinateManager.h; path = SphericalCollectionView/SPCoordinateManager.h; sourceTree = "<group>"; };
+		26AD99A517E0BF6F00741C00 /* SPCoordinateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPCoordinateManager.m; path = SphericalCollectionView/SPCoordinateManager.m; sourceTree = "<group>"; };
 		26D9554017DE8730003BB396 /* coordinate.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = coordinate.plist; sourceTree = "<group>"; };
-		26D9554217DEB10F003BB396 /* SPCoordinateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPCoordinateManager.h; sourceTree = "<group>"; };
-		26D9554317DEB10F003BB396 /* SPCoordinateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPCoordinateManager.m; sourceTree = "<group>"; };
 		26D9554517DEB6FC003BB396 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -126,8 +126,8 @@
 		08CF99E317DD53AE00CBB8AC /* SPKit */ = {
 			isa = PBXGroup;
 			children = (
-				26D9554217DEB10F003BB396 /* SPCoordinateManager.h */,
-				26D9554317DEB10F003BB396 /* SPCoordinateManager.m */,
+				26AD99A417E0BF6F00741C00 /* SPCoordinateManager.h */,
+				26AD99A517E0BF6F00741C00 /* SPCoordinateManager.m */,
 				08CF99DC17DD503100CBB8AC /* SPSphericalCollectionView.h */,
 				08CF99DD17DD503100CBB8AC /* SPSphericalCollectionView.m */,
 				08CF99D917DD4F8200CBB8AC /* SPSphericalCollectionViewCell.h */,
@@ -208,10 +208,10 @@
 			files = (
 				08CF99BA17DD41F000CBB8AC /* main.m in Sources */,
 				08CF99BE17DD41F000CBB8AC /* SPAppDelegate.m in Sources */,
-				26D9554417DEB10F003BB396 /* SPCoordinateManager.m in Sources */,
 				08CF99C717DD41F000CBB8AC /* SPViewController.m in Sources */,
 				08CF99DB17DD4F8200CBB8AC /* SPSphericalCollectionViewCell.m in Sources */,
 				08CF99DE17DD503100CBB8AC /* SPSphericalCollectionView.m in Sources */,
+				26AD99A617E0BF6F00741C00 /* SPCoordinateManager.m in Sources */,
 				08CF99E117DD538B00CBB8AC /* SPCollectionViewSphericalLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

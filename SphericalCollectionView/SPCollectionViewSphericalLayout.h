@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/CATransform3D.h>
+#import "SPCoordinateManager.h"
+
 
 
 @interface SPCollectionViewSphericalLayout : UICollectionViewFlowLayout
-
+@property (nonatomic,assign) SPCoordinate originAxis;
 @end

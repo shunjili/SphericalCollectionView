@@ -15,10 +15,12 @@ typedef struct {
     CGFloat z;
 } SPCoordinate;
 
+
 @interface SPCoordinateManager : NSObject
 
 @property (nonatomic, strong) NSDictionary *coordDict;
 + (SPCoordinateManager *)sharedManager;
 - (SPCoordinate) coordinateForIndex: (NSUInteger) index withMaximumIndex: (NSUInteger)max;
+- (SPCoordinate) coordinateForIndex:(NSUInteger)index withMaximumIndex:(NSUInteger)max originAxis:(SPCoordinate) originAxis;
 
 @end

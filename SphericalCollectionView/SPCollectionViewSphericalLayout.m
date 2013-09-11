@@ -7,9 +7,20 @@
 //
 
 #import "SPCollectionViewSphericalLayout.h"
-#import "SPCoordinateManager.h"
 #import <QuartzCore/QuartzCore.h>
 @implementation SPCollectionViewSphericalLayout
+
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        _originAxis.x = 1;
+        _originAxis.y = 0;
+        _originAxis.z = 0;
+    }
+    return self;
+}
 
 - (CGSize)collectionViewContentSize
 {
@@ -38,19 +49,29 @@
     [attributes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         UICollectionViewLayoutAttributes *attr = (UICollectionViewLayoutAttributes*) obj;
 
-        attr.center = self.collectionView.center;
+        CGPoint center = self.collectionView.center;
 
-        SPCoordinate coordinate = [[SPCoordinateManager sharedManager] coordinateForIndex:(idx+1) withMaximumIndex:count];
-        NSLog(@"x: %f, y: %f, z: %f", coordinate.x, coordinate.y, coordinate.z);
-        CGFloat radius = 200;
-        CGFloat shrinkFactor =(coordinate.z + 1)/2 + 0.5;
-        attr.transform = CGAffineTransformTranslate(CGAffineTransformMakeScale(shrinkFactor, shrinkFactor), coordinate.x*radius/shrinkFactor, coordinate.y*radius/shrinkFactor);
-        
-//        attr.transform3D = CATransform3DTranslate(CATransform3DMakeRotation((1-fabs(coordinate.z) * M_PI_4), coordinate.y, coordinate.x, 0.0), coordinate.x *radius, coordinate.y*radius, coordinate.z*radius);
-        attr.alpha = (coordinate.z +1)/2;
+        SPCoordinate coordinate = [[SPCoordinateManager sharedManager] coordinateForIndex:(idx+1) withMaximumIndex:count originAxis:_originAxis];
+        NSLog(@"x: %f, y: %f, z: %f", coordinate.x, coordinate.z, coordinate.z);
+        CGFloat radius = 100;
+        CGFloat shrinkFactor =(coordinate.z + 1)/2 + 0.5;;
+        center.x += coordinate.x *radius;
+        center.y += coordinate.y *radius;
+        attr.center = center;
+        //attr.transform3D = CATransform3DRotate(CATransform3DMakeScale(shrinkFactor, shrinkFactor, 1.0), (1-fabs(coordinate.z)*M_PI_4), coordinate.y, coordinate.x, 0.0);
+    
+        attr.transform3D = CATransform3DTranslate(CATransform3DMakeScale(shrinkFactor, shrinkFactor, 1.0), coordinate.x *radius/shrinkFactor, coordinate.y*radius/shrinkFactor, coordinate.z*radius/shrinkFactor);
+        attr.alpha = (coordinate.z + 1)*0.4 + 0.2;
     }];
     
     return attributes;
 }
+
+- (void)setOriginAxis:(SPCoordinate)originAxis
+{
+    _originAxis = originAxis;
+    [self invalidateLayout];
+}
+
 
 @end

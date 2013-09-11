@@ -20,6 +20,8 @@
         _scrollView = [[UIScrollView alloc] initWithFrame:[self bounds]];
         [_scrollView setBackgroundColor: [UIColor clearColor]];
         [_scrollView setDelegate:self];
+        [_scrollView setContentSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)];
+        [_scrollView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
         [self addSubview:_scrollView];
     }
     return self;
@@ -28,8 +30,6 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    [_scrollView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
-    [_scrollView setContentSize:CGSizeMake(_scrollView.frame.size.width*2, _scrollView.frame.size.height *2)];
 
 }
 
@@ -39,9 +39,8 @@
 {
     SPCoordinate axis;
     CGSize scrollViewSize = scrollView.frame.size;
-    axis.x = MAX(1-(scrollView.contentOffset.x/ scrollViewSize.width), -1);
-    axis.x = MIN(axis.x, 1);
-    axis.z = sqrtf(1- powf(axis.x, 2));
+    axis.x = sinf(-((fmodf(scrollView.contentOffset.x,  scrollViewSize.width)/scrollViewSize.width)-0.5) * 2*  M_PI);
+    axis.z = cosf(-((fmodf(scrollView.contentOffset.x,  scrollViewSize.width)/scrollViewSize.width)-0.5) * 2*  M_PI);
     axis.y = 0;
     SPCollectionViewSphericalLayout *layout = (SPCollectionViewSphericalLayout *) self.collectionViewLayout;
     if (axis.x ==0 && axis.y == 0 && axis.z == 0) {
@@ -50,6 +49,11 @@
     {
         [layout setOriginAxis:axis];
     }
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+{
+    [scrollView setContentOffset: CGPointMake(CGFLOAT_MAX/2, CGFLOAT_MAX/2)];
 }
 /*
 // Only override drawRect: if you perform custom drawing.

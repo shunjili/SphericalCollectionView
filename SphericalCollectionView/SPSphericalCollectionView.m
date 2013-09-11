@@ -38,11 +38,17 @@
 {
     SPCoordinate axis;
     axis.x = sqrtf(fabsf(scrollView.contentOffset.x)/(fabsf(scrollView.contentOffset.y) + fabsf(scrollView.contentOffset.x) + 0.00001));
-    axis.y = sqrtf(fabsf(scrollView.contentOffset.y)/(fabsf(scrollView.contentOffset.y) + fabsf(scrollView.contentOffset.x)+ 0.00001));
-    axis.z = 0;
+    axis.z = sqrtf(fabsf(scrollView.contentOffset.y)/(fabsf(scrollView.contentOffset.y) + fabsf(scrollView.contentOffset.x)+ 0.00001));
+    axis.y = 0;
     
     SPCollectionViewSphericalLayout *layout = (SPCollectionViewSphericalLayout *) self.collectionViewLayout;
-    [layout setOriginAxis:axis];
+    if (axis.x ==0 && axis.y == 0 && axis.z == 0) {
+        return;
+    }else
+    {
+        [layout setOriginAxis:axis];
+
+    }
 }
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -57,6 +57,7 @@
         center.x += coordinate.x *radius;
         center.y += coordinate.y *radius;
         attr.center = center;
+        //NSLog(@"coodinate: %f, %f, %f", coordinate.x, coordinate.y, coordinate.z);
         //attr.transform3D = CATransform3DRotate(CATransform3DMakeScale(shrinkFactor, shrinkFactor, 1.0), (1-fabs(coordinate.z)*M_PI_4), coordinate.y, coordinate.x, 0.0);
     
         attr.transform3D = CATransform3DTranslate(CATransform3DMakeScale(shrinkFactor, shrinkFactor, 1.0), coordinate.x *radius/shrinkFactor, coordinate.y*radius/shrinkFactor, coordinate.z*radius/shrinkFactor);

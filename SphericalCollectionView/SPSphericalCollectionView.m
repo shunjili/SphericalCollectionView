@@ -11,12 +11,16 @@
 #import "SPCollectionViewSphericalLayout.h"
 @implementation SPSphericalCollectionView
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout
 {
-    self = [super initWithFrame:frame];
+    self = [super initWithFrame:frame collectionViewLayout:layout];
     if (self) {
         // Initialization code
         [self setBackgroundColor:[UIColor blueColor]];
+        _scrollView = [[UIScrollView alloc] initWithFrame:[self bounds]];
+        [_scrollView setBackgroundColor: [UIColor clearColor]];
+        [_scrollView setDelegate:self];
+        [self addSubview:_scrollView];
     }
     return self;
 }
@@ -24,12 +28,9 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    _scrollView = [[UIScrollView alloc] initWithFrame:[self bounds]];
     [_scrollView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
-    [_scrollView setBackgroundColor: [UIColor clearColor]];
-    [_scrollView setDelegate:self];
     [_scrollView setContentSize:CGSizeMake(_scrollView.frame.size.width*2, _scrollView.frame.size.height *2)];
-    [self addSubview:_scrollView];
+
 }
 
 
@@ -37,17 +38,17 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     SPCoordinate axis;
-    axis.x = sqrtf(fabsf(scrollView.contentOffset.x)/(fabsf(scrollView.contentOffset.y) + fabsf(scrollView.contentOffset.x) + 0.00001));
-    axis.z = sqrtf(fabsf(scrollView.contentOffset.y)/(fabsf(scrollView.contentOffset.y) + fabsf(scrollView.contentOffset.x)+ 0.00001));
+    CGSize scrollViewSize = scrollView.frame.size;
+    axis.x = MAX(1-(scrollView.contentOffset.x/ scrollViewSize.width), -1);
+    axis.x = MIN(axis.x, 1);
+    axis.z = sqrtf(1- powf(axis.x, 2));
     axis.y = 0;
-    
     SPCollectionViewSphericalLayout *layout = (SPCollectionViewSphericalLayout *) self.collectionViewLayout;
     if (axis.x ==0 && axis.y == 0 && axis.z == 0) {
         return;
     }else
     {
         [layout setOriginAxis:axis];
-
     }
 }
 /*

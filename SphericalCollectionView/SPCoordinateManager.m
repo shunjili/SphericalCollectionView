@@ -9,12 +9,6 @@
 #import "SPCoordinateManager.h"
 #import <QuartzCore/QuartzCore.h>
 
-static SPCoordinate SPCoordinateXAxis = {
-    .x = 1.0f,
-    .y = 0.0f,
-    .z = 0.0f,
-};
-
 static SPCoordinate SPCoordinateZAxis = {
     .x = 0.0f,
     .y = 0.0f,
@@ -67,14 +61,15 @@ static SPCoordinate SPCoordinateZAxis = {
 - (SPCoordinate) coordinateForIndex:(NSUInteger)index withMaximumIndex:(NSUInteger)max originAxis:(SPCoordinate) originAxis
 {
     SPCoordinate originalCoordinate = [self coordinateForIndex:index withMaximumIndex:max];
+    
     //TO DO:figure out the formula
     CATransform3D transform = [self transitionFrom:SPCoordinateZAxis to:originAxis];
     //Apply transition matrix;
+
     SPCoordinate retval;
     retval.x = transform.m11 * originalCoordinate.x + transform.m12 * originalCoordinate.y + transform.m13 *originalCoordinate.z;
     retval.y = transform.m21 * originalCoordinate.x + transform.m22 * originalCoordinate.y + transform.m23 *originalCoordinate.z;
     retval.z = transform.m31 * originalCoordinate.x + transform.m32 * originalCoordinate.y + transform.m33 *originalCoordinate.z;
-    NSLog(@"%f, %f, %f", originalCoordinate.x, originalCoordinate.y, originalCoordinate.z);
     return retval;
 }
 

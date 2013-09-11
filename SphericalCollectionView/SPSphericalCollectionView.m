@@ -42,8 +42,8 @@
 {
     SPCoordinate axis;
     CGSize scrollViewSize = scrollView.frame.size;
-    axis.x = sinf(-((fmodf(scrollView.contentOffset.x,  scrollViewSize.width)/scrollViewSize.width)-0.5) * 2*  M_PI);
-    axis.z = cosf(-((fmodf(scrollView.contentOffset.x,  scrollViewSize.width)/scrollViewSize.width)-0.5) * 2*  M_PI);
+    axis.x = sinf(-((fmodf(scrollView.contentOffset.x,  scrollViewSize.width* M_PI)/(scrollViewSize.width* M_PI))-0.5) * 2*  M_PI);
+    axis.z = cosf(-((fmodf(scrollView.contentOffset.x,  scrollViewSize.width* M_PI)/(scrollViewSize.width* M_PI))-0.5) * 2*  M_PI);
     axis.y = 0;
     SPCollectionViewSphericalLayout *layout = (SPCollectionViewSphericalLayout *) self.collectionViewLayout;
     if (axis.x ==0 && axis.y == 0 && axis.z == 0) {

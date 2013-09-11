@@ -30,6 +30,9 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    if ([_scrollView contentOffset].x < 10 || _scrollView.contentOffset.y < 10) {
+        [_scrollView setContentOffset:CGPointMake(10000,10000)];
+    }
 
 }
 
@@ -55,6 +58,7 @@
 {
     [scrollView setContentOffset: CGPointMake(CGFLOAT_MAX/2, CGFLOAT_MAX/2)];
 }
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

@@ -9,6 +9,12 @@
 #import "SPCoordinateManager.h"
 #import <QuartzCore/QuartzCore.h>
 
+static SPCoordinate SPCoordinateXAxis = {
+    .x = 1.0f,
+    .y = 0.0f,
+    .z = 0.0f,
+};
+
 @implementation SPCoordinateManager
 
 
@@ -54,19 +60,15 @@
 
 - (SPCoordinate) coordinateForIndex:(NSUInteger)index withMaximumIndex:(NSUInteger)max originAxis:(SPCoordinate) originAxis
 {
-    SPCoordinate result = [self coordinateForIndex:index withMaximumIndex:max];
+    SPCoordinate originalCoordinate = [self coordinateForIndex:index withMaximumIndex:max];
     //TO DO:figure out the formula
-    SPCoordinate xAxis;
-    xAxis.x = 1.0f;
-    xAxis.y = 0.0f;
-    xAxis.z = 0.0f;
-    CATransform3D transform = [self transitionFrom:xAxis to:originAxis];
+    CATransform3D transform = [self transitionFrom:SPCoordinateXAxis to:originAxis];
     //Apply transition matrix;
     SPCoordinate retval;
-    retval.x = transform.m11 * result.x + transform.m12 * result.y + transform.m13 *result.z;
-    retval.y = transform.m21 * result.x + transform.m22 * result.y + transform.m23 *result.z;
-    retval.z = transform.m31 * result.x + transform.m32 * result.y + transform.m33 *result.z;
-    NSLog(@"%f, %f, %f", result.x, result.y, result.z);
+    retval.x = transform.m11 * originalCoordinate.x + transform.m12 * originalCoordinate.y + transform.m13 *originalCoordinate.z;
+    retval.y = transform.m21 * originalCoordinate.x + transform.m22 * originalCoordinate.y + transform.m23 *originalCoordinate.z;
+    retval.z = transform.m31 * originalCoordinate.x + transform.m32 * originalCoordinate.y + transform.m33 *originalCoordinate.z;
+    NSLog(@"%f, %f, %f", originalCoordinate.x, originalCoordinate.y, originalCoordinate.z);
     return retval;
 }
 

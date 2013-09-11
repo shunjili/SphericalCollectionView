@@ -52,9 +52,8 @@
         CGPoint center = self.collectionView.center;
 
         SPCoordinate coordinate = [[SPCoordinateManager sharedManager] coordinateForIndex:(idx+1) withMaximumIndex:count originAxis:_originAxis];
-        NSLog(@"x: %f, y: %f, z: %f", coordinate.x, coordinate.z, coordinate.z);
         CGFloat radius = 100;
-        CGFloat shrinkFactor =(coordinate.z + 1)/2 + 0.5;;
+        CGFloat shrinkFactor =(coordinate.z + 1)*0.2 + 0.6;;
         center.x += coordinate.x *radius;
         center.y += coordinate.y *radius;
         attr.center = center;

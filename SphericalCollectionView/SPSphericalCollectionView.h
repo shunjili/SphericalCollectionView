@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SPSphericalCollectionView : UICollectionView
-
+@interface SPSphericalCollectionView : UICollectionView <UIScrollViewDelegate>
+@property UIScrollView *scrollView;
 @end

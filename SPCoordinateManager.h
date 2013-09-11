@@ -7,14 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SPConstants.h"
 
+
+//Coodinate Structs
 
 typedef struct {
 	CGFloat x;
 	CGFloat y;
     CGFloat z;
 } SPCoordinate;
-
 
 @interface SPCoordinateManager : NSObject
 

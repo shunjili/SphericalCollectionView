@@ -7,7 +7,8 @@
 //
 
 #import "SPSphericalCollectionView.h"
-
+#import "SPCoordinateManager.h"
+#import "SPCollectionViewSphericalLayout.h"
 @implementation SPSphericalCollectionView
 
 - (id)initWithFrame:(CGRect)frame
@@ -20,6 +21,29 @@
     return self;
 }
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    _scrollView = [[UIScrollView alloc] initWithFrame:[self bounds]];
+    [_scrollView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
+    [_scrollView setBackgroundColor: [UIColor clearColor]];
+    [_scrollView setDelegate:self];
+    [_scrollView setContentSize:CGSizeMake(_scrollView.frame.size.width*2, _scrollView.frame.size.height *2)];
+    [self addSubview:_scrollView];
+}
+
+
+#pragma mark UIScrollView Delegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    SPCoordinate axis;
+    axis.x = sqrtf(fabsf(scrollView.contentOffset.x)/(fabsf(scrollView.contentOffset.y) + fabsf(scrollView.contentOffset.x) + 0.00001));
+    axis.y = sqrtf(fabsf(scrollView.contentOffset.y)/(fabsf(scrollView.contentOffset.y) + fabsf(scrollView.contentOffset.x)+ 0.00001));
+    axis.z = 0;
+    
+    SPCollectionViewSphericalLayout *layout = (SPCollectionViewSphericalLayout *) self.collectionViewLayout;
+    [layout setOriginAxis:axis];
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

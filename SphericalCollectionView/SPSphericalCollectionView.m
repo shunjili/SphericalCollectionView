@@ -21,7 +21,10 @@
         [_scrollView setBackgroundColor: [UIColor clearColor]];
         [_scrollView setDelegate:self];
         [_scrollView setContentSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)];
+        
         [_scrollView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
+        UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
+        [_scrollView addGestureRecognizer:tapRecognizer];
         [self addSubview:_scrollView];
     }
     return self;
@@ -58,7 +61,16 @@
 {
     [scrollView setContentOffset: CGPointMake(CGFLOAT_MAX/2, CGFLOAT_MAX/2)];
 }
+                                                 
+                                
+#pragma mark Manage Tap Gesture Recognizers
 
+- (void) tapped:(UITapGestureRecognizer*) sender
+{
+    NSLog(@"tapped");
+
+}
+                                                 
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

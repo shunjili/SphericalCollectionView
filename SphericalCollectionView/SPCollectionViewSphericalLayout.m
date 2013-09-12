@@ -52,15 +52,13 @@
         CGPoint center = self.collectionView.center;
 
         SPCoordinate coordinate = [[SPCoordinateManager sharedManager] coordinateForIndex:(idx+1) withMaximumIndex:count originAxis:_originAxis];
-        CGFloat radius = 100;
+        CGFloat radius = MIN(self.collectionView.frame.size.width * 0.4, self.collectionView.frame.size.height * 0.4);
         CGFloat shrinkFactor =(coordinate.z + 1)*0.2 + 0.6;;
         center.x += coordinate.x *radius;
         center.y += coordinate.y *radius;
         attr.center = center;
-        //NSLog(@"coodinate: %f, %f, %f", coordinate.x, coordinate.y, coordinate.z);
-        //attr.transform3D = CATransform3DRotate(CATransform3DMakeScale(shrinkFactor, shrinkFactor, 1.0), (1-fabs(coordinate.z)*M_PI_4), coordinate.y, coordinate.x, 0.0);
-    
-        attr.transform3D = CATransform3DTranslate(CATransform3DMakeScale(shrinkFactor, shrinkFactor, 1.0), coordinate.x *radius/shrinkFactor, coordinate.y*radius/shrinkFactor, coordinate.z*radius/shrinkFactor);
+        CATransform3D t = CATransform3DMakeScale(shrinkFactor, shrinkFactor, 1.0);
+        attr.transform3D = t;
         attr.alpha = (coordinate.z + 1)*0.4 + 0.2;
     }];
     

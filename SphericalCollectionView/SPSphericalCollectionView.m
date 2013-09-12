@@ -68,6 +68,9 @@
 - (void) tapped:(UITapGestureRecognizer*) sender
 {
     NSLog(@"tapped");
+    CGPoint point = [sender locationInView: self];
+    NSIndexPath *path = [self indexPathForItemAtPoint:point];
+    [[self delegate] collectionView:self didSelectItemAtIndexPath:path];
 
 }
                                                  

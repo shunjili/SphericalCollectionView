@@ -43,7 +43,7 @@
 #pragma mark UICollectioViewDelegate
 
 - (void)collectionView:(UICollectionView *)cv didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"lallaa");
+    //NSLog(@"indexpath:%@", indexPath);
     return;
 }
 
